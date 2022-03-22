@@ -2,7 +2,7 @@
 
 Version 2:
 
-changed the websocket src and reran upgraded pip installs
+changed the websocket src and reran upgraded pip installs (bascially ignore below)
 
 Version 1:
 downgraded some stuff to make it work, run:

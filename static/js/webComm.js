@@ -18,9 +18,15 @@ $(document).ready(function(){
 	socket = io();
 	document.getElementById('randomButton').onclick = () => send('my_event_test', {data: 'hello server'});
 	
-
+	socket.on('serverResponse', (msg) => handleServerResponse(msg))
 	asyncID = setInterval(updateGameState, MILLISECONDS_IN_A.SEC * 10);
 });
+
+const handleServerResponse = (msg) => {
+	const div = document.createElement('div');
+	div.innerText = msg;
+	document.getElementById('serverMessages').append(div);
+}
 
 const compileGameState = () => {
 	gameState.gameBoardID += 1;

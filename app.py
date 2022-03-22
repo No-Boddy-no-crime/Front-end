@@ -29,6 +29,10 @@ def test_disconnect():
 def handle_my_custom_event(arg1):
     print('received args: ' + json.dumps(arg1))
 
+@socketio.on('gameState')
+def handle_async_gameState_update(gameStateJSON):
+    print(json.dumps(gameStateJSON))
+
 
 if __name__ == '__main__':
     socketio.run(app)

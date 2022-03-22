@@ -1,9 +1,9 @@
 """
-Server (eww)
--- Jack
+Server
 """
 
 # Start with a basic flask app webpage.
+import json
 from flask_socketio import SocketIO, emit
 from flask import Flask, render_template, url_for, copy_current_request_context
 
@@ -25,9 +25,9 @@ def test_connect():
 def test_disconnect():
     print('Client Disconnected...')
 
-@socketio.on('hello')
-def test_hello():
-    print("hello")
+@socketio.on('my_event_test')
+def handle_my_custom_event(arg1):
+    print('received args: ' + json.dumps(arg1))
 
 
 if __name__ == '__main__':

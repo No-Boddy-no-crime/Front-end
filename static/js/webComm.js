@@ -29,5 +29,5 @@ const compileGameState = () => {
 }
 const updateGameState = () => send('gameState', compileGameState())
 
-const send = (eventName, payload) = > socket.emit(eventName, payload)
+const send = (eventName, payload) => socket.emit(eventName, payload)
 

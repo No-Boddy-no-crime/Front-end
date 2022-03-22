@@ -1,5 +1,6 @@
 var socket;
 var asyncID;
+
 const MILLISECONDS_IN_A = Object.freeze({SEC: 1000, MIN: 60000, HOUR: 3600000});
 
 const gameState = {
@@ -15,9 +16,8 @@ const gameState = {
 
 $(document).ready(function(){
 	socket = io();
-	document.getElementById('randomButton').onclick = function(){
-		socket.emit('my_event_test', {data: 'hello server'});
-	}
+	document.getElementById('randomButton').onclick = () => send('my_event_test', {data: 'hello server'});
+	
 
 	asyncID = setInterval(updateGameState, MILLISECONDS_IN_A.SEC * 10);
 });
@@ -27,5 +27,7 @@ const compileGameState = () => {
 	gameState.sentAt = Date.now();
 	return gameState;
 }
-const updateGameState = () => socket.emit('gameState', compileGameState());
+const updateGameState = () => send('gameState', compileGameState())
+
+const send = (eventName, payload) = > socket.emit(eventName, payload)
 

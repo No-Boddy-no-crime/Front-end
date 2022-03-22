@@ -1,6 +1,6 @@
 var socket;
 var asyncID;
-var MILLISECONDS_IN_A = Object.freeze({SEC: 1000, MIN: 60000, HOUR: 3600000});
+const MILLISECONDS_IN_A = Object.freeze({SEC: 1000, MIN: 60000, HOUR: 3600000});
 
 const gameState = {
 	name: 'gameState',
